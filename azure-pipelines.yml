@@ -1,0 +1,25 @@
+
+trigger: none
+pool: default
+steps:
+- script: |
+    git clone https://github.com/moshe322/lotto-webservice.git
+  displayName: 'clone code'
+- script: |
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean package'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+  displayName: 'maen-build'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'lotto-webservice/target'
+    ArtifactName: 'THAMMULURI'
+    publishLocation: 'Container'
