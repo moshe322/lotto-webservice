@@ -20,6 +20,6 @@ steps:
   displayName: 'maen-build'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'lotto-webservice/target'
+    PathtoPublish: 'target'
     ArtifactName: 'THAMMULURI'
     publishLocation: 'Container'
